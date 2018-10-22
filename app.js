@@ -14,7 +14,7 @@ const ItemCtrl = (function(){
     items: [
       {id: 0, name: 'Steak Dinner', calories: 900},
       {id: 1, name: 'Cookie', calories: 100},
-      {id: 2, name: 'Eggs', calories: 150},
+      {id: 2, name: 'Eggs', calories: 150}
     ],
     currentItem: null,
     totalCalories: 0
@@ -22,7 +22,11 @@ const ItemCtrl = (function(){
 
   // Public methods
   return {
-    // return data for browser accessibility
+    // return items only
+    getItems: function(){
+      return data.items;
+    },
+    // return all data
     logData: function(){
       return data;
     }
@@ -32,9 +36,29 @@ const ItemCtrl = (function(){
 
 // UI Controller--IIFE function
 const UICtrl = (function(){
+  const UISelectors = {
+    itemList: '#item-list'
+  }
   // Public methods
   return {
+    populateItemList: function(items){
+      let html = '';
 
+      items.forEach(function(item){
+        html += `
+          <li id="item-${item.id}" class="collection-item">
+            <strong>${item.name}</strong>
+            <em>${item.calories}</em>
+            <a href="#" class="secondary-content">
+              <i class="edit-item fas fa-pencil-alt"></i>
+            </a>
+          </li>
+        `;
+      });
+
+      // insert list items
+      document.querySelector(UISelectors.itemList).innerHTML = html;
+    }
   }
 })();
 
@@ -43,7 +67,12 @@ const App = (function(ItemCtrl, UICtrl){
   // Public methods
   return {
     init: function(){
-      console.log('init!')
+      console.log('Initializing TraKalorie!');
+      // fetch items from data structure
+      const items = ItemCtrl.getItems();
+
+      // populate list from items
+      UICtrl.populateItemList(items);
     }
   }
 })(ItemCtrl, UICtrl);

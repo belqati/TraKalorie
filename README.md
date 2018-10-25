@@ -1,46 +1,24 @@
 # <img src="public/imgs/heartbeat_icon.ico" width="30px"> TraKalorie
 
-*TraKalorie* is an app created in part under the direction of [Brad Traversy](https://www.udemy.com/modern-javascript-from-the-beginning/) in his *Modern JavaScript from the Beginning* course. The app uses the following technologies:
+*TraKalorie* is an app created under the direction of [Brad Traversy](https://www.udemy.com/modern-javascript-from-the-beginning/) in his *Modern JavaScript from the Beginning* course. The app employs the module and state JS patterns, and makes use of the following technologies:
 
   * JavaScript ES6
   * HTML
   * CSS
   * Materialize
 
-<img src="public/imgs/weatherAppJS_main.JPG" width="50%">
-
 ### Description and Features
 
-TraKalorie displays the following results:
+TraKalorie is a simple web interface that allows the input of a food item and it caloric value. It then displays the item, its calorie count, and the total calories for all listed items. As items are added, they appear in the list and their caloric values are added to the total. The app does not allow entry of blank fields.
 
-* Name
+<img src="public/imgs/traKalorie_main.JPG" width="50%">
 
-<img src="public/imgs/weatherAppJS_main_default.JPG" width="50%">
+The pencil icon takes the user to the edit state for that item, where they can edit the item's name or calorie values. Both add and clear buttons are hidden in this state. The delete button removes that item, and the back button closes the edit state. Total calories are updated if applicable.
 
-data populates the app with 
+<img src="public/imgs/traKalorie_edit.JPG" width="50%">
 
-<img src="public/imgs/weatherAppJS_modal.JPG" width="50%">
+The clear button removes the entire list, and only appears if the list is populated.
 
-The second, 
+<img src="public/imgs/traKalorie_clearAll_main.JPG" width="50%">
 
-<img src="public/imgs/weatherAppJS_live_search.JPG" width="50%">
-
-All methods 
-
-### Error Handling
-
-A blank value is clearly marked, rather than displaying no data, `null`, or `undefined`: e.g., 
-
-<img src="public/imgs/weatherAppJS_main_undisclosed.JPG" width="50%">
-
-All remaining errors are handled through temporary alerts communicating the situation to the user.
-
-<img src="public/imgs/weatherAppJS_modal_err.JPG" width="50%">
-
-in an alert
-
-<img src="public/imgs/weatherAppJS_main_address_err.JPG" width="50%">
-
-Finally, an alert lets the user know should a query fail for some reason.
-
-<img src="public/imgs/weatherAppJS_main_err.JPG" width="50%">
+All data persists to local storage, where it is added, updated, or removed based on user interaction. The removal of a final list item is equivalent to mashing clear: local storage is completely emptied in either scenario.

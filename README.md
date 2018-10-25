@@ -4,7 +4,6 @@
 
   * JavaScript ES6
   * HTML
-  * CSS
   * Materialize
 
 ### Description and Features

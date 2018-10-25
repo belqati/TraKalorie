@@ -7,18 +7,14 @@
   <link rel="icon" type="image/x-icon" href="/public/imgs/heartbeat_icon.ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css">
-  <link rel="stylesheet" href="/public/styles/main.css">
 </head>
 
-<body>
+<body class="purple lighten-5">
   <!-- Navbar -->
   <nav>
     <div class="nav-wrapper purple darken-3">
       <div class="container">
-        <a href="#" class="brand-logo center"><i class="fas fa-heartbeat"></i> TraKalorie</a>
-        <ul class="right">
-          <li><a href="#" class="clear-btn btn purple lighten-3">Clear All</a></li>
-        </ul>
+        <a href="#" class="brand-logo center logo-head"><i class="fas fa-heartbeat"></i> TraKalorie</a>
       </div>
     </div>
   </nav>
@@ -40,26 +36,23 @@
               <input type="number" placeholder="Add Calories" id="item-calories">
               <label for="item-calories">Calories</label>
             </div>
-            <button class="add-btn btn purple darken-3"><i class="fas fa-plus-circle"></i> Add</button>
-            <button class="update-btn btn orange"><i class="fas fa-edit"></i> Update</button>
-            <button class="delete-btn btn red"><i class="fas fa-times-circle"></i> Remove</button>
-            <button class="back-btn btn grey right"><i class="fas fa-chevron-circle-left"></i> Back</button>
+            <button class="btn-floating btn-large waves-effect waves-light add-btn btn purple darken-3"><i class="fas fa-plus"></i></button>
+            <button class="btn-floating btn-large update-btn btn orange"><i class="fas fa-edit"></i></button>
+            <button class="btn-floating btn-large delete-btn btn red"><i class="fas fa-times"></i></button>
+            <button class="btn-floating btn-large back-btn btn grey"><i class="fas fa-chevron-left"></i></button>
+            <button class="waves-effect waves-light clear-btn btn purple lighten-2 right"><i class="fas fa-exclamation-circle"></i> Clear All</button>
           </div>
         </form>
       </div>
     </div>
 
     <!-- Calorie Count -->
-    <h3 class="center-align">Total Calories: 
+    <h3 class="center-align purple-text text-darken-3">Total Calories: 
       <span class="total-calories">0</span>
     </h3>
 
     <!-- Item List -->
     <ul id="item-list" class="collection">
-<!--       <li class="collection-item" id="item-0">
-        <strong>Steak Dinner: </strong><em>600 Calories</em>
-        <a href="#" class="secondary-content"><i class="fas fa-pencil-alt"></i></a>
-      </li> -->
     </ul>
 
   </div>

@@ -284,12 +284,27 @@ const UICtrl = (function(){
       document.querySelector(UISelectors.updateBtn).style.display = 'none';
       document.querySelector(UISelectors.deleteBtn).style.display = 'none';
       document.querySelector(UISelectors.backBtn).style.display = 'none';
+      UICtrl.clearBtnShow();
     },
     showEditState: function(){
       document.querySelector(UISelectors.addBtn).style.display = 'none';
       document.querySelector(UISelectors.updateBtn).style.display = 'inline';
       document.querySelector(UISelectors.deleteBtn).style.display = 'inline';
       document.querySelector(UISelectors.backBtn).style.display = 'inline';
+      UICtrl.clearBtnHide();
+    },
+    clearBtnHide: function(){
+      document.querySelector(UISelectors.clearBtn).style.display = 'none';
+    },
+    clearBtnShow: function(){
+      if(localStorage.getItem('items') !== null){
+        console.log('there is a list!');
+        document.querySelector(UISelectors.clearBtn).style.display = 'inline';
+      } else {
+        console.log('no list!');
+        UICtrl.clearBtnHide();
+      }
+      // document.querySelector(UISelectors.clearBtn).style.display = 'inline';
     },
     getSelectors: function(){
       return UISelectors;
@@ -351,6 +366,9 @@ const App = (function(ItemCtrl, StorageCtrl, UICtrl){
 
       // localstorage
       StorageCtrl.storeItem(newItem);
+
+      // show clearAll button
+      UICtrl.clearBtnShow();
 
       // clear fields
       UICtrl.clearInput();
@@ -420,6 +438,11 @@ const App = (function(ItemCtrl, StorageCtrl, UICtrl){
     // delete from localstorage
     StorageCtrl.deleteItemFromStorage(currentItem.id);
 
+    if(localStorage.getItem('items') === '[]'){
+      localStorage.removeItem('items');
+      UICtrl.hideList();
+    };
+
     UICtrl.clearEditState();
 
     e.preventDefault();
@@ -437,6 +460,8 @@ const App = (function(ItemCtrl, StorageCtrl, UICtrl){
     UICtrl.removeItems();
     // clear all from localstorage
     StorageCtrl.clearItemsFromStorage();
+    // hide clearAll button
+    UICtrl.clearBtnShow();
     // hide ul
     UICtrl.hideList();
   }
@@ -444,7 +469,6 @@ const App = (function(ItemCtrl, StorageCtrl, UICtrl){
   // Public methods
   return {
     init: function(){
-      console.log('Initializing TraKalorie!');
       // set initial state
       UICtrl.clearEditState();
 
